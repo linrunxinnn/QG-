@@ -544,6 +544,7 @@ nav ul li a:hover {
 
 .item1 div:nth-child(1) div span .item1-active {
   border-bottom: 2px solid #ff6700;
+  color: #ff6700;
 }
 
 .class .last {

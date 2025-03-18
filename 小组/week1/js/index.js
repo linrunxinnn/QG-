@@ -116,6 +116,7 @@ function nextSlide() {
 function lastSlide() {
   showSlide(curImgIndex - 1);
 }
+showSlide(curImgIndex);
 autoPlay = setInterval(nextSlide, 3000);
 nextIcon.addEventListener("mouseleave", () => {
   autoPlay = setInterval(nextSlide, 3000);
@@ -148,3 +149,27 @@ lastIcon.addEventListener("mouseleave", () => {
 nextIcon.addEventListener("mouseleave", () => {
   autoPlay = setInterval(nextSlide, 3000);
 });
+
+//class变换
+document
+  .querySelectorAll(".class .item div:nth-child(1) span")
+  .forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+      let id = item.dataset.id;
+      document
+        .querySelectorAll(".class .item div:nth-child(1) span")
+        .forEach((item) => {
+          item.querySelector("a").classList.remove("item1-active");
+        });
+      item.querySelector("a").classList.add("item1-active");
+      item.parentElement.parentElement.parentElement
+        .querySelectorAll(".contain .col ul")
+        .forEach((data) => {
+          if (data.dataset.id != id) {
+            data.style.display = "none";
+          } else {
+            data.style.display = "grid";
+          }
+        });
+    });
+  });
