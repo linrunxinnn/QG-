@@ -1,0 +1,366 @@
+@media (max-width: 1024px) {
+  nav {
+    padding: 5px 10px;
+  }
+
+  nav ul a {
+    font-size: 8px;
+  }
+
+  nav .shop-car span {
+    font-size: 8px;
+    padding: 5px 2.5px;
+    margin: -8px 0;
+  }
+
+  .header .header-nav ul {
+    font-size: 15px;
+  }
+
+  .header .header-search {
+    width: 200px;
+    height: 20px;
+    border: none;
+  }
+
+  nav .shop-car span svg {
+    height: 15px;
+    width: 15px;
+  }
+  /*  */
+
+  .header-logo svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .hero .home .home-top .contain .home-nav ul a {
+    font-size: 15px;
+  }
+
+  .home-dot span {
+    width: 5px;
+    height: 5px;
+  }
+
+  .home-bottom {
+    gap: 20px;
+  }
+
+  .home-bottom .function li {
+    padding: 5px 10px;
+    gap: 0px;
+  }
+
+  .home-bottom .function li p {
+    font-size: 10px;
+    margin: 5px 0;
+    white-space: nowrap;
+  }
+
+  .home-bottom .function li img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .home-bottom {
+    height: 108px;
+  }
+
+  .home-bottom .img-box img {
+    width: 240px;
+  }
+  .home-bottom .function {
+    height: 130px;
+  }
+
+  .class {
+    gap: 10px;
+  }
+
+  .class .item .contain {
+    gap: 10px;
+  }
+
+  .class .item div:nth-child(1) p {
+    font-size: 18px;
+  }
+
+  .class .item div:nth-child(1) span a svg {
+    width: 19px;
+    height: 18px;
+  }
+
+  .class .item div:nth-child(1) span a {
+    font-size: 13px;
+  }
+
+  .item .contain .row img {
+    height: 570px;
+  }
+
+  .class .contain .item .col img {
+    width: 130px;
+  }
+
+  .class .item .contain .col ul {
+    gap: 10px;
+  }
+
+  .class .item .contain .col ul li {
+    padding: 15px 15px;
+  }
+
+  .class .item .contain .col ul li .message p:nth-child(2) {
+    max-width: 160px;
+  }
+
+  .last .last-first a,
+  .last .last-second a {
+    font-size: 13px;
+  }
+
+  .class .item .advertise1 ul {
+    gap: 10px;
+  }
+
+  .class .item .advertise1 ul img {
+    height: 280.5px;
+  }
+
+  footer .nav ul li span a svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  footer .nav ul li span a {
+    font-size: 12px;
+  }
+
+  footer .point-left {
+    gap: 20px;
+  }
+
+  footer .nav ul li span a {
+    font-size: 12px;
+  }
+
+  footer .point-right .num-box p:nth-child(1) {
+    font-size: 18px;
+  }
+
+  footer .point-right .num-box p {
+    font-size: 10px;
+  }
+
+  footer .point-right .num-box a {
+    width: 100px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  nav ul {
+    gap: 10px;
+  }
+
+  nav ul a {
+    font-size: 8px;
+  }
+
+  .header .header-nav ul {
+    font-size: 8px;
+  }
+
+  .header .header-search {
+    width: 60%;
+    height: 32px;
+    min-width: 150px;
+    max-width: 240px;
+    padding: 0 8px;
+    font-size: 14px;
+    border-radius: 16px;
+  }
+
+  .header .header-search input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .header .header-search ::placeholder {
+    font-size: 12px;
+    color: #999;
+  }
+
+  .header .header-search svg {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  nav .shop-car {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  nav .shop-car span {
+    font-size: 8px;
+    padding: 6px 8px;
+    margin: -11px 0;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  nav .shop-car span svg {
+    height: 8px;
+    width: 8px;
+  }
+
+  .header-logo svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header .header-search {
+    width: 170px;
+    height: 13px;
+  }
+
+  .header .header-search input {
+    width: 150;
+  }
+
+  .header .header-search :-ms-input-placeholder {
+    font-size: 8px;
+  }
+
+  /* 没改好 */
+  .header .header-search svg {
+    width: 15px;
+    height: 15px;
+  }
+  .header-search button {
+    width: 13px;
+    height: 13px;
+  }
+  .header-search button:hover svg {
+    fill: #ec7424;
+  }
+
+  .hero .home .home-top .contain .home-nav ul a {
+    font-size: 10px;
+  }
+  .hero .home .home-top .contain .home-nav ul svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .home-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .home-icon .icon-last {
+    left: 21%;
+  }
+
+  .home-icon .icon-last,
+  .home-icon .icon-next {
+    height: 30px;
+    width: 25px;
+  }
+
+  .home-bottom {
+    gap: 3px;
+  }
+
+  .home-bottom .function li {
+    padding: 5px 10px;
+    gap: 0px;
+  }
+
+  .home-bottom .function li p {
+    font-size: 8px;
+    margin: 5px 0;
+    white-space: nowrap;
+  }
+
+  .home-bottom .function li img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .home-bottom {
+    height: 108px;
+  }
+
+  .home-bottom .img-box img {
+    width: 190px;
+  }
+  .home-bottom .function {
+    height: 102px;
+  }
+
+  .class {
+    gap: 10px;
+  }
+
+  .class .item .contain {
+    gap: 10px;
+  }
+
+  .class .item div:nth-child(1) p {
+    font-size: 18px;
+  }
+
+  .class .item div:nth-child(1) span a svg {
+    width: 19px;
+    height: 18px;
+  }
+
+  .class .item div:nth-child(1) span a {
+    font-size: 13px;
+  }
+
+  .item .contain .row img {
+    height: 480px;
+  }
+
+  .class .contain .item .col img {
+    width: 100px;
+  }
+
+  .class .item .contain .col ul {
+    gap: 8px;
+  }
+
+  .class .item .contain .col ul li {
+    padding: 10px 10px;
+  }
+
+  .class .item .contain .col ul li .message p:nth-child(2) {
+    max-width: 120px;
+    font-size: 12px;
+  }
+
+  .last .last-first a,
+  .last .last-second a {
+    font-size: 13px;
+  }
+
+  .class .item .advertise1 ul {
+    gap: 10px;
+  }
+
+  .class .item .advertise1 ul img {
+    height: 280.5px;
+  }
+}

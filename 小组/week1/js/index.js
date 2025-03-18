@@ -11,6 +11,13 @@ document.querySelectorAll(".header-nav ul li").forEach((li) => {
 
   li.addEventListener("mouseenter", () => {
     console.log("鼠标进入 li 元素");
+    document
+      .querySelectorAll(".header-nav ul li .header-drop-contain")
+      .forEach((item) => {
+        console.log("none");
+
+        item.style.display = "none";
+      });
     dropContain.style.display = "block";
   });
 
@@ -65,11 +72,22 @@ const dotContain = document.querySelector(".home-dot");
     dotContain.innerHTML += `<span data-id=${i}></span>`;
   }
 })();
-const adImg = document.querySelector(".hero .home .img-box");
+const adImg = document.querySelector(".hero .home .img-box ul");
 const lastIcon = document.querySelector(".hero .home .icon-last");
 const nextIcon = document.querySelector(".hero .home .icon-next");
 let curImgIndex = 0;
 let autoPlay;
+(function () {
+  for (let i = 0; i < homeNavData.length; i++) {
+    adImg.innerHTML += `<li data-id="${i}" style="display: none;">
+                  <a href="#">
+                    <img
+                      src="${homeNavData[i]}"
+                    />
+                  </a>
+                </li>`;
+  }
+})();
 function showSlide(index) {
   if (index >= homeNavData.length) {
     curImgIndex = 0;
@@ -78,11 +96,13 @@ function showSlide(index) {
   } else {
     curImgIndex = index;
   }
-  adImg.innerHTML = `
-    <a href="#">
-      <img src="${homeNavData[curImgIndex]}" />
-    </a>
-  `;
+  document.querySelectorAll(".hero .home .img-box ul li").forEach((li) => {
+    li.classList.remove("active");
+    li.style.display = "none";
+  });
+  document.querySelector(
+    `.hero .home .img-box ul li[data-id="${curImgIndex}"]`
+  ).style.display = "block";
   document.querySelectorAll(".home-dot span").forEach((span) => {
     span.classList.remove("active");
   });

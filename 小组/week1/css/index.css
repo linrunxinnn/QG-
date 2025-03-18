@@ -216,12 +216,17 @@ nav ul li a:hover {
 .hero .home .home-top .contain .home-nav {
   position: relative;
   width: 20%;
+  height: 100%;
   padding: 40px 0;
   z-index: 2;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   /* height: 520px; */
+}
+
+.hero .home .home-top .contain .home-nav ul a {
+  font-size: 20px;
 }
 
 .hero .home .home-top .contain .home-nav::before {
@@ -255,6 +260,7 @@ nav ul li a:hover {
 .hero .home .home-top .contain .home-nav ul li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 20px;
   margin: 0 -10px;
 }
@@ -364,15 +370,17 @@ nav ul li a:hover {
 /* home-bottom */
 .home-bottom {
   display: flex;
+  /* grid-template-columns: repeat(4, 1fr); */
   justify-content: space-around;
   align-items: center;
   gap: 43px;
   margin-top: 20px;
+  width: 100%;
 }
 
 .home-bottom .function {
   background-color: #5f5750;
-  width: 316px;
+  /* width: ; */
   height: 170px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -402,6 +410,10 @@ nav ul li a:hover {
   height: 24px;
 }
 
+.home-bottom .img-box .active {
+  display: block;
+}
+
 .home-bottom .img-box img {
   width: 316px;
 }
@@ -411,8 +423,8 @@ nav ul li a:hover {
 }
 
 .home-bottom .function li:hover a img {
-  mix-blend-mode: multiply;
-  background-color: #fff;
+  /* mix-blend-mode: multiply; */
+  color: #fff;
 }
 
 /* .home-bottom .function li:hover .home-bottom .function li img {
@@ -450,6 +462,8 @@ nav ul li a:hover {
 .class .item .contain {
   display: flex;
   gap: 20px;
+  justify-content: center;
+  padding: 0 20px;
 }
 
 .class .item div:nth-child(1) {
