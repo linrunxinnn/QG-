@@ -1,0 +1,401 @@
+.main {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  gap: 20px;
+  background-color: black;
+}
+
+.main-left img {
+  width: 375px;
+  height: 100vh;
+}
+
+.main-right {
+  padding-top: 20px;
+  padding-right: 30px;
+}
+
+.main-right .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.main-right .nav .left,
+.main-right .nav .right ul {
+  display: flex;
+  align-items: center;
+}
+
+.main-right .nav .left {
+  color: #f1f3f5;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.main-right .nav .right ul {
+  gap: 20px;
+}
+
+.main-right .nav .right ul li:nth-last-child(1) span {
+  padding-left: 20px;
+}
+
+.main-right .nav .right ul a {
+  color: #adb5bd;
+}
+
+.main-right .nav .right ul .last {
+  border-left: #adb5bd 0.5px solid;
+  position: relative;
+}
+
+.main-right .nav .right ul .last:hover .drop {
+  display: block;
+}
+
+.main-right .nav .right ul li .drop {
+  display: none;
+  position: absolute;
+  top: 120%;
+  left: 100%;
+  transform: translateX(-100%);
+  padding: 10px 10px;
+  background-color: #242424;
+  color: #adb5bd;
+}
+
+.main-right .nav .right ul li .drop ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.main-right .nav .right ul li .drop ul li {
+  width: 100%;
+  padding: 5px 10px;
+  margin: 0 -10px;
+}
+
+.main-right .nav .right ul li .drop ul li:hover {
+  background-color: #343a40;
+}
+
+.main-right .nav .right ul li a:hover {
+  color: #ff5c00;
+  transition: all ease 0.3s;
+}
+
+.main-right .sign-box {
+  background-color: #242424;
+  box-shadow: 0 20px 50px 0 hsla(0, 0%, 64%, 0.1);
+  margin: 0 auto 80px;
+  padding: 30px 50px;
+  width: 30%;
+  border-radius: 3px;
+  position: relative;
+  /* 给二维码的定位 */
+}
+
+.main-right .code-box {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transform: translateX(-100%);
+  z-index: 2;
+  padding: 10px 10px;
+  background-color: #8f3b0a;
+}
+
+.main-right .code-box {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%); /*剪掉二维码的右下角*/
+}
+
+.main-right .code-box:hover {
+  background-color: #ff5c00;
+  transition: all ease 0.3s;
+}
+
+.main-right .sign-box .head {
+  margin-bottom: 40px;
+}
+
+.main-right .sign-box .head ul {
+  display: flex;
+  gap: 20px;
+}
+
+.main-right .sign-box .head ul span {
+  padding: 5px 0px;
+}
+
+.main-right .sign-box .head ul li a {
+  font-size: 22px;
+  color: #dee2e6;
+}
+
+.main-right .sign-box .head ul .active {
+  border-bottom: 3px solid #ff5c00;
+  font-weight: bolder;
+  color: #f1f3f5;
+}
+
+.main-right .sign-box .signin-box .id-box,
+.main-right .sign-box .signin-box .password-box {
+  display: flex;
+  align-items: center;
+  width: 87%;
+  height: 30px;
+  border-radius: 4px;
+  padding: 10px 20px;
+  background-color: #343a40;
+  margin-bottom: 20px;
+}
+
+.main-right .sign-box .signin-box .id-box input,
+.main-right .sign-box .signin-box .password-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #dee2e6;
+  background-color: #343a40;
+}
+
+.main-right .sign-box .signin-box .password-box button {
+  background-color: #343a40;
+  border: none;
+  cursor: pointer;
+}
+
+.main-right .sign-box .signin-box .check-box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.main-right .sign-box .signin-box .check-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background-color: #343a40;
+  pad: 0 5px;
+  width: 15px;
+  height: 15px;
+}
+
+.main-right .sign-box .signin-box .check-box {
+  font-size: 13px;
+  color: #adb5bd;
+  margin-bottom: 15px;
+}
+
+.main-right .sign-box .signin-box .check-box a {
+  font-size: 13px;
+  color: #f1f3f5;
+}
+
+.main-right .sign-box .signin-box .sign-btn {
+  padding: 10px 0;
+  width: 100%;
+  background-color: #ff5c00;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.main-right .sign-box .signin-box .otherway-box .find {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.main-right .sign-box .signin-box .otherway-box .find a {
+  color: #bd4702;
+}
+
+.main-right .sign-box .signin-box .otherway-box p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #adb5bd;
+  margin-bottom: 15px;
+}
+
+.main-right .sign-box .signin-box .otherway-box .ways {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.main-right .sign-box .signin-box .otherway-box span {
+  position: relative;
+}
+
+.main-right .sign-box .signin-box .otherway-box svg {
+  width: 40px;
+  height: 40px;
+}
+
+.main-right .sign-box .signin-box .otherway-box .ways-info {
+  display: none;
+  font-size: 13px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-20%);
+  padding: 3px 3px;
+  background-color: #343a40;
+  min-width: 80px;
+  border: 0.5px solid #adb5bd;
+}
+
+.main-right .sign-box .signin-box .otherway-box span:hover .ways-info {
+  display: block;
+}
+
+.main-right .signup-box .cont-box {
+  display: flex;
+}
+
+.main-right .signup-box .box {
+  width: 280px;
+  padding: 10px 10px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.main-right .signup-box .cont-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #343a40;
+}
+
+.main-right .signup-box .cont-box .contain {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-right .signup-box .cont-box .contain input {
+  background-color: #343a40;
+  border: none;
+  outline: none;
+  margin-bottom: 3px;
+  font-size: 10px;
+}
+
+.main-right .signup-box .cont-box .contain span {
+  font-size: 16px;
+  font-weight: 900;
+  color: #adb5bd;
+}
+
+.main-right .signup-box .phone-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #343a40;
+}
+
+.main-right .signup-box .phone-box .contain {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.main-right .signup-box .phone-box .contain input,
+.main-right .signup-box .phone-box .phone-num input {
+  background-color: #343a40;
+  border: none;
+  outline: none;
+  margin-bottom: 3px;
+}
+
+.main-right .signup-box .phone-box .contain input {
+  width: 70px;
+  font-size: 10px;
+}
+
+.main-right .signup-box .phone-box .contain span {
+  font-size: 16px;
+  font-weight: 900;
+  color: #adb5bd;
+}
+
+.main-right .signup-box .phone-box .phone-num input {
+  font-size: 16px;
+}
+
+.main-right .signup-box .chnum-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #343a40;
+  height: 40px;
+  overflow: hidden;
+}
+
+.main-right .signup-box .chnum-box input {
+  font-size: 16px;
+  color: #adb5bd;
+  background-color: #343a40;
+  border: none;
+  outline: none;
+}
+
+.main-right .signup-box .chnum-box button {
+  padding: 20px 10px;
+  margin: -10px -10px;
+  background-color: #343a40;
+  border: none;
+}
+
+.main-right .signup-box .chnum-box button a {
+  color: #ff5c00;
+}
+
+.main-right .sign-box .signup-box .check-box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.main-right .sign-box .signup-box .check-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background-color: #343a40;
+  pad: 0 5px;
+  width: 15px;
+  height: 15px;
+}
+
+.main-right .sign-box .signup-box .check-box {
+  font-size: 13px;
+  color: #adb5bd;
+  margin-bottom: 15px;
+}
+
+.main-right .sign-box .signup-box .check-box a {
+  font-size: 13px;
+  color: #f1f3f5;
+}
+
+.main-right .sign-box .signup-box .sign-btn {
+  padding: 10px 30px;
+  width: 300px;
+  background-color: #ff5c00;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.main-right .sign-box .signup-box .other a {
+  color: #bd4702;
+  font-size: 13px;
+  font-weight: 700;
+}
