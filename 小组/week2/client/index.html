@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="#">关于我</a>
+      <ul>
+        <li>
+          <a href="#" class="active">中</a>
+        </li>
+        <li>/</li>
+        <li>
+          <a href="#">En</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="main">
+      <h1 class="title">
+        <div class="left">
+          <span></span>
+          <span></span>
+        </div>
+        <img src="	https://todo.uiineed.com/assets/img/todo.svg" />
+
+        <div class="right">
+          <div class="bar"></div>
+          <div class="pivot-box">
+            <div class="pivot"></div>
+            <div class="string"></div>
+            <div class="bob"></div>
+          </div>
+        </div>
+      </h1>
+      <div class="main-contain">
+        <div class="input-box">
+          <input type="text" placeholder="新增代办事项" />
+          <button>提交</button>
+        </div>
+        <div class="container">
+          <div class="todo-contain">
+            <div class="todo-nav">
+              <input
+                type="button"
+                data-box="allread-main"
+                value="全部标为完成"
+                class="finishall-btn"
+              />
+              <div class="message-box">
+                <p>今日事今日毕，勿将今日事待明日</p>
+              </div>
+            </div>
+            <div class="empty-main" style="display: block">
+              <ul class="empty-tips">
+                <li>添加你的第一个待办事项！📝</li>
+                <li>食用方法💡：</li>
+                <li>✔️ 所有提交操作支持Enter回车键提交</li>
+                <li>✔️ 拖拽Todo上下移动可排序(仅支持PC)</li>
+                <li>✔️ 双击上面的标语和 Todo 可进行编辑</li>
+                <li>✔️ 右侧的小窗口是快捷操作哦</li>
+                <li>🔒 所有的Todo数据存储在浏览器本地</li>
+                <li>📝 支持下载和导入，导入追加到当前序列</li>
+              </ul>
+            </div>
+            <div class="list-main" data-box="all-main" style="display: block">
+              <ul></ul>
+            </div>
+            <div
+              class="recycle-main"
+              data-box="recycle-main"
+              style="display: none"
+            >
+              <ul></ul>
+            </div>
+          </div>
+          <div class="bar-contain">
+            <ul>
+              <li>
+                <span>开⭐</span>
+                <span style="display: none">快捷操作</span>
+              </li>
+              <ul class="empty-bar" style="display: block">
+                <li data-box="all-main">全部</li>
+                <li data-box="recycle-main">回收站</li>
+                <li>导入(txt/json)</li>
+              </ul>
+              <ul class="list-bar" style="display: none">
+                <li data-box="all-main">全部</li>
+                <li data-box="recycle-main">回收站</li>
+                <li data-box="clearfinish-main">清除已完成</li>
+                <li data-box="clearall-main">清除全部</li>
+                <li>导出数据</li>
+                <li data-box="exportdata-main">导入(txt/json)</li>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

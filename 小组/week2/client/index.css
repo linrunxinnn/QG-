@@ -1,0 +1,416 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+/* 导航栏 */
+nav {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+nav a {
+  color: #666;
+}
+
+nav ul .active {
+  font-size: 18px;
+  font-weight: 800;
+  color: #343a40;
+}
+
+/* title  */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 50px 0;
+}
+
+.title .left {
+  display: flex;
+  gap: 10px;
+}
+
+.title .left span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background-color: rgb(255 214 233);
+  border-radius: 1px;
+  transform-origin: center center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* 定义动画关键帧：旋转 + 暂停 */
+@keyframes rotateSequence {
+  0% {
+    transform: rotate(0deg);
+    animation-timing-function: ease-in-out; /* 旋转阶段使用缓动 */
+  }
+  25% {
+    transform: rotate(360deg);
+    animation-timing-function: linear; /* 暂停阶段保持静止 */
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 第一个方块 */
+.title .left span:nth-child(1) {
+  animation: rotateSequence 4s infinite;
+}
+
+/* 第二个方块：延迟 2s 启动 */
+.title .left span:nth-child(2) {
+  animation: rotateSequence 4s infinite;
+  animation-delay: 2s; /* 延迟半个周期 */
+}
+
+.title img {
+  width: 200px;
+  height: 52px;
+}
+
+/* 钟摆 */
+.title .right {
+  position: relative;
+  margin-left: 10px;
+}
+
+.title .right .pivot-box {
+  position: relative;
+  width: 2px;
+  height: 60px;
+  /* margin-top: 50px; */
+  transform-origin: top center; /* 设置旋转中心点为顶部 */
+  animation: swing 2s ease-in-out infinite;
+}
+
+.right .bar {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 26px;
+  background: #d0f4f0;
+  border: 3px solid #33322e;
+  border-radius: 15px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.pivot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: rgb(255 214 233);
+  border: 2px solid black;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.string {
+  position: absolute;
+  top: 5px; /* 支点下方开始 */
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background: #666;
+  transform: translateX(-50%);
+}
+
+.bob {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  background: #f8d966;
+  border: 2px solid black;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+/* 摆动动画 */
+@keyframes swing {
+  0% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: rotate(30deg);
+  }
+}
+
+/* main  */
+.main .main-contain {
+  display: flex;
+  flex-direction: column;
+  /* 用来间隔input和main的间距 */
+  gap: 30px;
+  margin: 0 auto;
+  /* 和bar定位 */
+  position: relative;
+}
+
+.main .main-contain .input-box {
+  width: 700px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.8);
+  transition: all ease-in-out 0.3s;
+}
+
+.main .main-contain .input-box:hover {
+  transition: all ease 0.4s;
+  box-shadow: none;
+}
+
+.main .main-contain .input-box input {
+  width: 85%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  padding-left: 10px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.main .main-contain .input-box button {
+  padding: 18px 0;
+  margin: -18px 0;
+  width: 15%;
+  background-color: rgb(255 214 233);
+  border: none;
+  border-left: 2px solid black;
+}
+
+.main .main-contain .todo-contain {
+  height: auto;
+  /* 宽度于input-box一致 */
+  width: 700px;
+  height: 500px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  overflow-y: scroll;
+  padding-bottom: 20px;
+}
+
+.main .main-contain .todo-contain::-webkit-scrollbar {
+  display: none;
+}
+
+.main .main-contain .todo-contain .todo-nav {
+  position: absolute;
+  height: 8%;
+  width: 99.4%;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid black;
+  overflow: hidden;
+}
+
+.todo-contain .todo-nav input {
+  width: 20%;
+  height: 100%;
+  border: none;
+  outline: none;
+  border-right: 2px solid black;
+  background-color: #8cd4cb;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.todo-contain .todo-nav .message-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 100%;
+  background-color: #f8f9fa;
+}
+
+.todo-contian .todo-nav .message-box:hover {
+  transition: all ease 0.3s;
+  background-color: rgb(255 214 233);
+}
+
+.todo-contain .empty-main,
+.todo-contain .list-main,
+.todo-contain .recycle-main {
+  padding: 90px 0 0 30px;
+  /* 顶部的padding是为了和nav保持距离 */
+}
+
+.todo-contain .empty-main ul li {
+  line-height: 30px;
+}
+
+.main-contain .bar-contain {
+  position: absolute;
+  left: 103%;
+  top: 90px; /*maincontain:gap+inputheight*+一点剩余*/
+  font-size: 14px;
+  border: 2px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.8);
+  transition: all ease-in-out 0.3s;
+}
+
+.main-contain .bar-contain:hover {
+  box-shadow: none;
+  transition: all ease 0.3s;
+}
+
+.main-contain .bar-contain ul {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.main-contain .bar-contain ul li {
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #8cd4cb;
+  transition: all ease 0.3s;
+  margin: 0 auto;
+}
+
+.main-contain .bar-contain ul .active {
+  background-color: #f6a89e;
+  transition: all ease 0.3s;
+}
+
+.main-contain .bar-contain ul li:hover {
+  background-color: #f6a89e;
+  transition: all ease 0.3s;
+}
+
+.main-contain .bar-contain ul li {
+  border-bottom: 2px solid black;
+}
+
+.main-contain .bar-contain ul li:nth-last-child(1) {
+  border: none;
+}
+
+/* listcontain */
+.main-contain .list-main ul,
+.todo-contain .recycle-main ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-contain .list-main ul .item,
+.todo-contain .recycle-main ul .item {
+  width: 90%;
+  padding: 15px 10px;
+  background-color: rgb(208 244 240);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: #33322e 2px solid;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.8);
+  transition: all ease-in-out 0.3s;
+}
+
+.main-contain .list-main ul .item:hover,
+.todo-contain .recycle-main ul .item:hover {
+  transition: all ease-in-out 0.3s;
+  box-shadow: none;
+}
+
+.main-contain .list-main ul .item .left,
+.todo-contain .recycle-main ul .item .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main-contain .list-main ul .item .finish-box,
+.todo-contain .recycle-main ul .item .finish-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background-color: #e8f6ff;
+  border: #33322e 2px solid;
+  border-radius: 50%;
+}
+
+.main-contain .list-main ul .item .finish-box:hover,
+.main-contain .recycle-main ul .item .finish-box:hover {
+  transform: translate(2px, -2px);
+  box-shadow: -4px 4px 0px #33322e;
+  transition: all ease 0.3s;
+}
+
+.main-contain .list-main ul .item .del-box,
+.main-contain .recycle-main ul .item .del-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background-color: #e8f6ff;
+  border: #33322e 2px solid;
+  border-radius: 10px;
+  transition: all ease 0.3s;
+}
+
+.main-contain .list-main ul .item .del-box:hover,
+.main-contain .recycle-main ul .item .del-box:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px #33322e;
+  transition: all ease 0.3s;
+  background-color: #f6a89e;
+}
