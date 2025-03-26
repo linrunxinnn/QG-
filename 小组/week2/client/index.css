@@ -189,7 +189,7 @@ nav ul .active {
   width: 700px;
   height: 50px;
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #f8f9fa;
   display: flex;
   justify-content: space-between;
@@ -198,6 +198,7 @@ nav ul .active {
   cursor: pointer;
   box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.8);
   transition: all ease-in-out 0.3s;
+  position: relative; /* 用于定位下拉框 */
 }
 
 .main .main-contain .input-box:hover {
@@ -223,6 +224,63 @@ nav ul .active {
   background-color: rgb(255 214 233);
   border: none;
   border-left: 2px solid black;
+}
+
+.input-drop {
+  position: absolute;
+  top: 50px;
+  left: 2px;
+  width: 85%; /* 与input-box一致 */
+  background-color: #f8d966;
+  z-index: 3;
+  color: #33322e;
+  display: none; /* 初始隐藏 */
+  border: 2px solid black;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+  transition: all ease 0.3s;
+}
+
+.input-drop.show {
+  display: block; /* 显示状态 */
+}
+
+.input-drop ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.input-drop ul li {
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  display: flex;
+  gap: 20px;
+}
+
+.input-drop ul li:hover {
+  background-color: #f6a89e;
+  transition: all ease 0.3s;
+}
+
+.input-drop ul li .finish-box {
+  width: 26px;
+  height: 26px;
+  border: #33322e 2px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.input-drop ul li .text-box {
+  display: flex;
+  align-items: center;
 }
 
 .main .main-contain .todo-contain {
@@ -413,4 +471,16 @@ nav ul .active {
   box-shadow: 4px 4px 0px #33322e;
   transition: all ease 0.3s;
   background-color: #f6a89e;
+}
+
+.main-contain .list-main ul .item .text-box input,
+.main-contain .recycle-main ul .item .text-box input {
+  width: 390px;
+  height: 30px;
+  background-color: aliceblue;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px 15px;
+  z-index: 3;
+  color: #33322e;
 }
