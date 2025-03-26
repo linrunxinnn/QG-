@@ -58,11 +58,11 @@ app.post("/updateCompleted", (req, res) => {
         return res.status(404).json({ error: "任务不存在或缺少completed字段" });
       }
 
-      const completed = Boolean(result[0].completed); // 转换为布尔值
+      // const completed = Boolean(result[0].completed); // 转换为布尔值
       res.status(200).json({
         status: 200,
         msg: "更新成功",
-        data: { completed },
+        data: result[0],
       });
     });
   });
@@ -194,6 +194,28 @@ app.post("/updateTitle", (req, res) => {
       status: 200,
       msg: "更新成功",
     });
+  });
+});
+
+app.get("/exportData", (req, res) => {
+  const sql = `SELECT * FROM tasks`;
+  db.query(sql, (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ status: 500, msg: "查询失败" });
+    }
+
+    let txtData = "";
+    result.forEach((task) => {
+      txtData += `ID: ${task.id}, Title: ${task.title}, Completed: ${task.completed}\n`;
+    });
+
+    // 关键响应头设置
+    res.setHeader("Content-Type", "text/plain");
+    res.setHeader("Content-Disposition", 'attachment; filename="tasks.txt"');
+    res.setHeader("Cache-Control", "no-cache");
+
+    res.send(txtData);
   });
 });
 
