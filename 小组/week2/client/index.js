@@ -482,20 +482,6 @@ function clearall() {
   });
 }
 function exportData() {
-  // $.ajax({
-  //   url: "http://localhost:3000/exportData",
-  //   method: "get",
-  //   success: function (data) {
-  //     console.log(data);
-  //     // const a = document.createElement("a");
-  //     // a.href = data.url;
-  //     // a.download = "todo.json";
-  //     // a.click();
-  //   },
-  //   error: function (err) {
-  //     console.log(err);
-  //   },
-  // });
   const link = document.createElement("a");
   link.href = "http://localhost:3000/exportData";
   link.download = "tasks.txt"; // 设置下载文件名
@@ -545,6 +531,9 @@ document.querySelectorAll(".bar-contain ul li").forEach((item) => {
         break;
       case "exportdata-main":
         exportData();
+        break;
+      case "importdata-main":
+        importData();
         break;
       default:
         console.warn("Unknown box type:", boxType);
