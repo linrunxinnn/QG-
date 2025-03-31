@@ -1,0 +1,143 @@
+* {
+  background-color: #212529;
+  color: aliceblue;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: #adb5bd 1px solid;
+}
+
+nav .left,
+nav .right ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav .right ul li {
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+nav .right ul li:hover,
+nav .right ul li:hover svg {
+  background-color: #adb5bd;
+  color: #212529;
+  transition: all 0.3s ease;
+}
+
+nav .right ul li img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+nav .right ul li.separator {
+  width: 1px;
+  height: 30px;
+  background-color: #adb5bd;
+  margin: 0 10px;
+  padding: 0;
+  margin-left: 10px;
+}
+
+/* 模型表单 */
+.main .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 30px;
+}
+
+.main .nav button {
+  padding: 10px 10px;
+  border-radius: 5px;
+  background-color: #adb5bd;
+  font-size: 15px;
+  font-weight: bold;
+  color: #212529;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.main .nav button:hover {
+  background-color: #ced4da;
+  transition: all 0.3s ease;
+}
+
+.main .module-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 0 30px;
+}
+
+.main .module-item {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #2b3035;
+  border: 1px solid #494c4e;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.main .module-item:hover {
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+}
+
+.main .module-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.main .module-item img:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.main .module-item .message {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main .module-item .message .button-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main .module-item .message .button-group button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #343a40;
+  font-size: 15px;
+  font-weight: bold;
+  color: #212529;
+  border: none;
+  cursor: pointer;
+  border: solid 1px #343a40;
+  transition: all 0.3s ease;
+}
+
+.main .module-item .message .button-group button svg {
+  background-color: #343a40;
+}
+
+.main .module-item .message .button-group button:hover {
+  border: solid 1px #adb5bd;
+  transition: all 0.3s ease;
+}

@@ -1,0 +1,539 @@
+body {
+  background-color: #212529;
+  color: aliceblue;
+}
+
+body {
+  min-height: 100vh; /* 整个视口高度 */
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: #adb5bd 1px solid;
+}
+
+nav .left,
+nav .right ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav .right ul li {
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+nav .right ul li:hover,
+nav .right ul li:hover svg {
+  background-color: #adb5bd;
+  color: #212529;
+  transition: all 0.3s ease;
+}
+
+nav .right ul li img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+nav .right ul li.separator {
+  width: 1px;
+  height: 30px;
+  background-color: #adb5bd;
+  margin: 0 10px;
+  padding: 0;
+  margin-left: 10px;
+}
+
+/*main*/
+.main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+}
+
+/* 左侧 */
+.main .left-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 10px;
+  background-color: #212529;
+  border-right: #adb5bd 1px solid;
+}
+
+.main .left-box .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main .left-box .head .title,
+.main .left-box .head .add {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.main .left-box .head .add {
+  padding: 5px 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.main .left-box .head .add:hover {
+  background-color: #4e545a;
+  transition: all 0.3s ease;
+}
+
+.main .left-box .input-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid #adb5bd;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.main .left-box .input-box:hover {
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.main .left-box .input-box input {
+  flex: 1;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #212529;
+}
+
+.main .left-box .list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main .left-box .list ul li .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  background-color: none;
+  border: 1px solid #494c4e;
+  transition: all 0.3s ease;
+}
+
+.main .left-box .list ul li .item:hover {
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+}
+
+.main .left-box .list ul li .item .left {
+  display: flex;
+  align-items: center;
+  background-color: none;
+  gap: 10px;
+}
+
+.main .left-box .list ul li .dropdown {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.main .left-box .list ul li .hide {
+  display: none;
+}
+
+.main .left-box .list ul li .dropdown .item {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  background-color: #343a40;
+}
+
+.main .left-box .list ul li .dropdown .item:hover {
+  background-color: #212529;
+  transition: all 0.3s ease;
+}
+
+.main .left-box .list ul li .dropdown .item .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.main .left-box .list ul li .dropdown .item .right {
+  display: flex;
+  align-items: center;
+  padding: 5px 5px;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  border: 1px solid #212529;
+}
+
+.main .left-box .list ul li .dropdown .item .right:hover {
+  background-color: #494c4e;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+}
+
+.main .left-box .list ul li .dropdown .item .message {
+  display: flex;
+  background-color: #495057;
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* 展示部分 */
+
+.main .right-box {
+  display: grid;
+  grid-template-rows: 1fr 0.05fr;
+}
+
+.main .right-box .show-box {
+  border-bottom: #adb5bd 1px solid;
+  position: relative;
+}
+
+.main .right-box .show-box .change-box {
+  background-color: #343a40;
+  border: 1px solid #adb5bd;
+  border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 5px 10px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.main .right-box .show-box .change-box .active {
+  background-color: #adb5bd;
+  padding: 5px 10px;
+  margin: -5px -10px;
+  color: #212529;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.main .right-box .show-box .item {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0px;
+  background-color: #343a40;
+  width: 300px;
+  border: #4e545a 2px solid;
+  border-radius: 10px;
+}
+
+.main .right-box .show-box .item .right {
+  display: flex;
+  align-items: center;
+}
+
+.main .right-box .show-box .item .top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: #adb5bd 1px solid;
+  padding: 10px 10px;
+}
+
+.main .right-box .show-box .item .message ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.main .right-box .show-box .item .message ul input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.main .right-box .show-box .item .connect {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.main .right-box .show-box .item .connect .connector {
+  padding: 5px 5px;
+  border-radius: 5px;
+  background-color: #2b3035;
+  border: 1px solid #494c4e;
+  transition: all 0.3s ease;
+}
+
+.main .right-box .show-box .item .connect .connector:hover {
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+}
+
+.main .right-box .show-box .item .main .right-box .bottom-bar {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main .right-box .bottom-bar button,
+.internet-btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #495057;
+  border: 1px solid #ced4da;
+  font-size: 15px;
+  color: aliceblue;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.main .right-box .bottom-bar .active {
+  background-color: #adb5bd;
+  color: #212529;
+  transition: all 0.3s ease;
+}
+
+.main .right-box .bottom-bar button:hover {
+  background-color: #adb5bd;
+  color: #212529;
+  transition: all 0.3s ease;
+}
+
+.main .right-box .run-box .file-show-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px;
+}
+
+.main .right-box .run-box .file-show-box .file {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 5px;
+  background-color: #495057;
+  border: 1px solid #777a7c;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.main .right-box .run-box .file-show-box .file:hover {
+  border: 1px solid #adb5bd;
+  transition: all 0.3s ease;
+}
+
+.main .right-box .run-box .file-show-box .file:hover .del-icon {
+  opacity: 1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.main .right-box .run-box .file-show-box .file .del-icon {
+  position: absolute;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  padding: 2px 2px;
+  top: 0;
+  right: 0;
+  transform: translate(25%, -25%);
+  border-radius: 50%;
+  background-color: #adb5bd;
+  transition: all 0.3s ease;
+}
+
+.main .right-box .run-box .input-box {
+  margin: 8px 10px;
+  border: 1px solid #adb5bd;
+  border-radius: 5px;
+}
+
+.main .right-box .run-box .input-box .input {
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  gap: 10px;
+}
+
+.main .right-box .run-box .input-box .input textarea {
+  max-height: 50px;
+  overflow: auto;
+  padding: 10px 10px;
+  border-radius: 5px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #2b3035;
+  color: #e9ecef;
+  font-size: 15px;
+}
+
+.main .right-box .run-box .input-box .input textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.main .right-box .run-box .input-box .input .btn-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main .right-box .run-box .input-box .input .btn-box .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main .right-box .run-box .input-box .input .btn-box .right {
+  display: flex;
+  gap: 10px;
+}
+
+.main .right-box .run-box .input-box .input .btn-box .right svg {
+  padding: 5px 5px;
+  border-radius: 50%;
+}
+
+.main .right-box .run-box .input-box .input .btn-box .right svg:hover {
+  background-color: #adb5bd;
+  border-radius: 50%;
+  color: #212529;
+  transition: all 0.3s ease;
+}
+
+/* 蒙版样式 */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色 */
+  z-index: 100; /* 确保蒙版在上层 */
+  display: none;
+}
+
+/* add  */
+.add-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 居中 */
+  background-color: #212529;
+  padding: 40px 30px;
+  border-radius: 10px;
+  z-index: 101; /* 在蒙版之上 */
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-box ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-box ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  background-color: #2b3035;
+  border: 1px solid #494c4e;
+  transition: all 0.3s ease;
+}
+
+.add-box ul li input {
+  padding: 5px 5px;
+  border-radius: 5px;
+  flex: 1;
+  border: none;
+  outline: none;
+  background-color: #2b3035;
+  color: #e9ecef;
+  font-size: 15px;
+}
+
+.add-box ul li:hover {
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+}
+
+.add-box .btn-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.add-box .btn-box button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #495057;
+  border: 1px solid #ced4da;
+  font-size: 15px;
+  color: aliceblue;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-box .btn-box button:hover {
+  background-color: #adb5bd;
+  color: #212529;
+  transition: all 0.3s ease;
+}
+
+.hide {
+  display: none;
+}
+.show-block {
+  display: block;
+}
+.show-flex {
+  display: flex;
+}
