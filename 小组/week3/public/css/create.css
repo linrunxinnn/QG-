@@ -10,7 +10,7 @@ body {
 }
 
 nav {
-  height: 60px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -234,6 +234,15 @@ nav .right ul li.separator {
   transition: all 0.3s ease;
 }
 
+.main .right-box .show-box .change-box span:hover {
+  background-color: #6e7275;
+  padding: 5px 10px;
+  margin: -5px -10px;
+  color: #212529;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
 .main .right-box .show-box .change-box .active {
   background-color: #adb5bd;
   padding: 5px 10px;
@@ -251,6 +260,7 @@ nav .right ul li.separator {
   width: 300px;
   border: #4e545a 2px solid;
   border-radius: 10px;
+  position: absolute;
 }
 
 .main .right-box .show-box .item .right {
@@ -300,6 +310,55 @@ nav .right ul li.separator {
 .main .right-box .show-box .item .connect .connector:hover {
   border: 1px solid #ced4da;
   transition: all 0.3s ease;
+}
+
+.main .right-box .show-box .item .edit {
+  position: fixed;
+  display: none;
+  top: 0%;
+  width: auto;
+  z-index: 1000;
+  background-color: #2b3035;
+  border: 1px solid #495057;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  transform: translateY(-10px);
+  border-radius: 10px;
+}
+
+.main .right-box .show-box .item .edit[style*="display: block"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.main .right-box .show-box .item .edit ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 10px 0 10px;
+  background-color: #2b3035;
+  border: 1px solid #494c4e;
+  border-radius: 5px;
+}
+
+.main .right-box .show-box .item .edit ul li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-bottom: 10px;
+}
+
+.main .right-box .show-box .item .edit ul li:nth-last-child(1) {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.main .right-box .show-box .item .edit ul li:hover {
+  background-color: #343a40;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 10px 10px 10px 10px;
+  margin: -10px -10px 0 -10px;
 }
 
 .main .right-box .show-box .item .main .right-box .bottom-bar {
