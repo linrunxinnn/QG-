@@ -404,9 +404,8 @@ nav .right ul li.separator {
 }
 
 .main .right-box .show-box .item .edit {
-  position: fixed;
+  position: absolute;
   display: none;
-  top: 0%;
   width: auto;
   z-index: 1000;
   background-color: #2b3035;
@@ -615,7 +614,7 @@ nav .right ul li.separator {
   z-index: 101; /* 在蒙版之上 */
   display: none;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .add-box ul {
@@ -633,5 +632,31 @@ nav .right ul li.separator {
   border-radius: 5px;
   background-color: #2b3035;
   border: 1px solid #494c4e;
+  transition: all 0.3s ease;
+}
+
+.add-box .btn-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.add-box .btn-box button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #495057;
+  border: 1px solid #ced4da;
+  font-size: 15px;
+  color: aliceblue;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-box .btn-box button:hover {
+  background-color: #adb5bd;
+  color: #212529;
   transition: all 0.3s ease;
 }

@@ -1,12 +1,13 @@
 // 添加模型
+
 //蒙版
 const overlay = document.querySelector(".overlay");
 const addBox = document.querySelector(".add-box");
 document
   .querySelector(".main .left-box .head .add")
   .addEventListener("click", (item) => {
-    overlay.classList.add("show-block");
-    addBox.classList.add("show-flex");
+    overlay.style.display = "block";
+    addBox.style.display = "flex";
   });
 //关闭蒙版
 document
@@ -14,8 +15,8 @@ document
   .addEventListener("click", (item) => {
     console.log(1);
 
-    overlay.classList.remove("show-block");
-    addBox.classList.remove("show-flex");
+    overlay.style.display = "none";
+    addBox.style.display = "none";
   });
 
 //搜索
@@ -64,7 +65,23 @@ showBox.addEventListener("drop", (e) => {
   e.preventDefault();
   const type = e.dataTransfer.getData("text/plain");
   if (type === "node") {
-    add(e.offsetX, e.offsetY);
+    const showBoxRect = showBox.getBoundingClientRect();
+    const outShowBox = document.querySelector(".out-show-box");
+    const outRect = outShowBox.getBoundingClientRect();
+
+    // 计算相对于show-box的位置，考虑缩放和偏移
+    const x = (e.clientX - showBoxRect.left) / scale;
+    const y = (e.clientY - showBoxRect.top) / scale;
+
+    // 检查是否在out-show-box范围内
+    if (
+      x >= 0 &&
+      x <= outRect.width / scale &&
+      y >= 0 &&
+      y <= outRect.height / scale
+    ) {
+      add(x, y);
+    }
   }
 });
 //添加节点
@@ -107,7 +124,7 @@ function add(x, y) {
                 <div class="connector prev-connector" data-dir="prev">←</div>
                 <div class="connector next-connector" data-dir="next">→</div>
               </div>
-              <div class="edit">
+              <div class="edit" style="display: none">
                 <ul>
                   <li>
                     <svg
@@ -159,6 +176,7 @@ let tempLine = null;
 function makeDraggable(node) {
   const header = node.querySelector(".drag-handle");
   const connectors = node.querySelectorAll(".connector");
+  const editDiv = node.querySelector(".edit");
 
   let offsetX, offsetY;
 
@@ -170,8 +188,19 @@ function makeDraggable(node) {
 
     function moveNode(e) {
       const showBoxRect = showBox.getBoundingClientRect();
-      node.style.left = `${e.clientX - showBoxRect.left - offsetX}px`;
-      node.style.top = `${e.clientY - showBoxRect.top - offsetY}px`;
+      const outShowBox = document.querySelector(".out-show-box");
+      const outRect = outShowBox.getBoundingClientRect();
+
+      // 计算新位置
+      let newX = (e.clientX - showBoxRect.left - offsetX) / scale;
+      let newY = (e.clientY - showBoxRect.top - offsetY) / scale;
+
+      // 确保节点不会移出out-show-box范围
+      newX = Math.max(0, Math.min(newX, outRect.width / scale - rect.width));
+      newY = Math.max(0, Math.min(newY, outRect.height / scale - rect.height));
+
+      node.style.left = `${newX}px`;
+      node.style.top = `${newY}px`;
 
       updateLines(); // 移动时更新连线
     }
@@ -198,6 +227,13 @@ function makeDraggable(node) {
     });
   });
 }
+// 全局点击事件 - 点击其他地方隐藏所有edit div
+document.addEventListener("click", () => {
+  document.querySelectorAll(".edit").forEach((edit) => {
+    edit.style.display = "none";
+  });
+});
+
 // 全局鼠标移动和抬起事件监听
 document.addEventListener("mousemove", (e) => {
   if (!draggingConnector || !tempLine) return;
@@ -226,10 +262,10 @@ function createLine(x, y) {
   const showBoxRect = showBox.getBoundingClientRect();
   const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-  line.setAttribute("x1", x - showBoxRect.left);
-  line.setAttribute("y1", y - showBoxRect.top);
-  line.setAttribute("x2", x - showBoxRect.left);
-  line.setAttribute("y2", y - showBoxRect.top);
+  line.setAttribute("x1", (x - showBoxRect.left) / scale);
+  line.setAttribute("y1", (y - showBoxRect.top) / scale);
+  line.setAttribute("x2", (x - showBoxRect.left) / scale);
+  line.setAttribute("y2", (y - showBoxRect.top) / scale);
   line.setAttribute("stroke", "white");
   line.setAttribute("stroke-width", "2");
   svg.appendChild(line);
@@ -239,18 +275,18 @@ function updateLines(line, x, y) {
   console.log("更新线条位置", x, y); // 检查是否触发
 
   const showBoxRect = showBox.getBoundingClientRect();
-  line.setAttribute("x2", x - showBoxRect.left);
-  line.setAttribute("y2", y - showBoxRect.top);
+  line.setAttribute("x2", (x - showBoxRect.left) / scale);
+  line.setAttribute("y2", (y - showBoxRect.top) / scale);
 }
 function finalizeConnection(connector1, connector2, line) {
   const showBoxRect = showBox.getBoundingClientRect();
   const rect1 = connector1.getBoundingClientRect();
   const rect2 = connector2.getBoundingClientRect();
 
-  const x1 = rect1.left + rect1.width / 2 - showBoxRect.left;
-  const y1 = rect1.top + rect1.height / 2 - showBoxRect.top;
-  const x2 = rect2.left + rect2.width / 2 - showBoxRect.left;
-  const y2 = rect2.top + rect2.height / 2 - showBoxRect.top;
+  const x1 = (rect1.left + rect1.width / 2 - showBoxRect.left) / scale;
+  const y1 = (rect1.top + rect1.height / 2 - showBoxRect.top) / scale;
+  const x2 = (rect2.left + rect2.width / 2 - showBoxRect.left) / scale;
+  const y2 = (rect2.top + rect2.height / 2 - showBoxRect.top) / scale;
   line.setAttribute("x1", x1);
   line.setAttribute("y1", y1);
   line.setAttribute("x2", x2);
@@ -283,10 +319,10 @@ function finalizeConnection(connector1, connector2, line) {
   const rect1 = connector1.getBoundingClientRect();
   const rect2 = connector2.getBoundingClientRect();
 
-  const x1 = rect1.left + rect1.width / 2 - showBoxRect.left;
-  const y1 = rect1.top + rect1.height / 2 - showBoxRect.top;
-  const x2 = rect2.left + rect2.width / 2 - showBoxRect.left;
-  const y2 = rect2.top + rect2.height / 2 - showBoxRect.top;
+  const x1 = (rect1.left + rect1.width / 2 - showBoxRect.left) / scale;
+  const y1 = (rect1.top + rect1.height / 2 - showBoxRect.top) / scale;
+  const x2 = (rect2.left + rect2.width / 2 - showBoxRect.left) / scale;
+  const y2 = (rect2.top + rect2.height / 2 - showBoxRect.top) / scale;
   line.setAttribute("x1", x1);
   line.setAttribute("y1", y1);
   line.setAttribute("x2", x2);
@@ -309,30 +345,108 @@ function updateLines() {
 
     conn.line.setAttribute(
       "x1",
-      rect1.left + rect1.width / 2 - showBoxRect.left
+      (rect1.left + rect1.width / 2 - showBoxRect.left) / scale
     );
     conn.line.setAttribute(
       "y1",
-      rect1.top + rect1.height / 2 - showBoxRect.top
+      (rect1.top + rect1.height / 2 - showBoxRect.top) / scale
     );
     conn.line.setAttribute(
       "x2",
-      rect2.left + rect2.width / 2 - showBoxRect.left
+      (rect2.left + rect2.width / 2 - showBoxRect.left) / scale
     );
     conn.line.setAttribute(
       "y2",
-      rect2.top + rect2.height / 2 - showBoxRect.top
+      (rect2.top + rect2.height / 2 - showBoxRect.top) / scale
     );
   });
 }
 
 //展示框的放缩,滑动
+let isDragging = false;
+let lastX, lastY;
 
-//展示部分中的小项目移动
+showBox.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  const scaleBy = 1.1;
+  const minScale = 0.5;
+  const maxScale = 2.0;
 
-//展示部分中小项目的连接线
+  if (e.deltaY > 0) {
+    scale = Math.max(minScale, scale / scaleBy);
+  } else {
+    scale = Math.min(maxScale, scale * scaleBy);
+  }
 
-//展示部分中小项目的右键删除,复制
+  showBox.style.transform = `scale(${scale})`;
+  showBox.style.width = `${100 / scale}%`;
+  showBox.style.height = `${100 / scale}%`;
+});
+
+showBox.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  lastX = e.clientX;
+  lastY = e.clientY;
+});
+
+showBox.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  e.preventDefault();
+
+  const dx = e.clientX - lastX;
+  const dy = e.clientY - lastY;
+  lastX = e.clientX;
+  lastY = e.clientY;
+
+  const currentTransform = canvas.style.transform.match(
+    /translate\(([^,]+),([^)]+)\)/
+  ) || [0, 0];
+  const currentX = parseFloat(currentTransform[1]) || 0;
+  const currentY = parseFloat(currentTransform[2]) || 0;
+
+  canvas.style.transform = `translate(${currentX + dx}px, ${
+    currentY + dy
+  }px) scale(${scale})`;
+});
+
+showBox.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+
+showBox.addEventListener("mouseleave", () => {
+  isDragging = false;
+});
+
+//展示部分中小项目的删除,复制
+// 右键点击显示edit菜单
+document
+  .querySelectorAll(".main .right-box .show-box .item")
+  .forEach((item) => {
+    const editDiv = item.querySelector(".edit");
+
+    item.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      const rect = item.getBoundingClientRect();
+      editDiv.style.display = "block";
+      editDiv.style.left = `${e.clientX - rect.left}px`;
+      editDiv.style.top = `${e.clientY - rect.top}px`;
+    });
+
+    // 点击edit菜单时不隐藏
+    editDiv.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  });
+
+// 全局点击事件 - 点击其他地方隐藏所有edit菜单
+document.addEventListener("click", (e) => {
+  // 检查点击的是否是edit菜单或其子元素
+  if (!e.target.closest(".edit")) {
+    document.querySelectorAll(".edit").forEach((edit) => {
+      edit.style.display = "none";
+    });
+  }
+});
 
 //-------------------------------------------------------------
 //输入部分
