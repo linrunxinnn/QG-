@@ -61,7 +61,7 @@ showBox.addEventListener("dragover", (e) => {
   e.preventDefault(); // 允许放置
 });
 
-showBox.addEventListener("drop", (e) => {
+showBox.addEventListener("drop", async (e) => {
   e.preventDefault();
   const type = e.dataTransfer.getData("text/plain");
   if (type === "node") {
@@ -85,7 +85,7 @@ showBox.addEventListener("drop", (e) => {
   }
 });
 //添加节点
-function add(x, y) {
+async function add(x, y) {
   const node = document.createElement("div");
   node.classList.add("node");
   node.classList.add("item");
@@ -167,8 +167,43 @@ function add(x, y) {
                 </ul>
               </div>
   `;
+
+  //向层级表中添加数据
+  const data = {
+    modulId: 1,
+    name: "ChatGPT 4.o",
+    layer: 0,
+    work: "不知道",
+    weight: 1,
+    remark: "这是关于gpt4.0的介绍",
+    ins_outs: {
+      ins: [],
+      outs: [],
+    },
+    position: {
+      first: [1, 1],
+      second: [2, 2],
+    },
+  };
+  fetch("http://localhost:3000/layer/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      console.log("layer添加成功", result);
+      // 在这里可以使用 result.id 来获取新添加的记录的 ID
+      node.dataset.id = result.id; // 将 ID 存储在节点上
+    })
+    .catch((error) => {
+      console.error("layer添加失败", error);
+    });
+
   showBox.appendChild(node);
-  makeDraggable(node);
+  makeDraggable(node); // 让节点可拖动
 }
 //让节点可以拖动
 let draggingConnector = null;
@@ -362,6 +397,25 @@ function updateLines() {
   });
 }
 
+//将连接线数据存储到数据库中
+function saveConnection(id, x, y) {
+  const data = { id, x, y };
+  fetch("/layer/ins_outs", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      console.log("连接线数据保存成功", result);
+    })
+    .catch((error) => {
+      console.error("连接线数据保存失败", error);
+    });
+}
+
 //展示框的放缩,滑动
 let isDragging = false;
 let lastX, lastY;
@@ -448,6 +502,9 @@ document.addEventListener("click", (e) => {
   }
 });
 
+//--------------------------------------------------------------
+//更新层级
+
 //-------------------------------------------------------------
 //输入部分
 //保存模型
@@ -455,3 +512,6 @@ document.addEventListener("click", (e) => {
 //上传文件
 
 //发送信息
+
+//--------------------------------------------------------------
+//获取每一个小节点的id

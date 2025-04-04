@@ -199,12 +199,20 @@ nav .right ul li.separator {
   transition: all 0.3s ease;
 }
 
-.main .left-box .list ul li .dropdown .item .message {
+.main .left-box .list ul li .dropdown .item:hover .message {
   display: flex;
+  opacity: 1;
+  transition: all 0.3s opacity;
+}
+
+.main .left-box .list ul li .dropdown .item .message {
+  display: none;
+  opacity: 0;
   background-color: #495057;
   width: 100%;
   padding: 5px 10px;
   border-radius: 5px;
+  transition: all 0.3s opacity;
 }
 
 /* 展示部分 */
@@ -625,14 +633,24 @@ nav .right ul li.separator {
 
 .add-box ul li {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   padding: 8px 10px;
   border-radius: 5px;
   background-color: #2b3035;
   border: 1px solid #494c4e;
   transition: all 0.3s ease;
+}
+
+.add-box ul li input {
+  flex: 1;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #2b3035;
+  color: #e9ecef;
+  font-size: 15px;
 }
 
 .add-box .btn-box {
