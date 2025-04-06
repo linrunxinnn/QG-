@@ -54,7 +54,8 @@ connection.connect((err) => {
             id INT AUTO_INCREMENT PRIMARY KEY,
             head VARCHAR(255) NOT NULL,
             data varchar(500) NOT NULL,
-            removed BOOLEAN DEFAULT false
+            removed BOOLEAN DEFAULT false,
+            scale INT DEFAULT 1
           )`;
 
       // 创建层级表

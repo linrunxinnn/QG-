@@ -384,7 +384,6 @@ nav .right ul li.separator {
   cursor: pointer;
   user-select: none;
   pointer-events: auto;
-  z-index: 1000;
   position: relative;
   transition: all 0.3s ease;
   border: 2px solid white;
