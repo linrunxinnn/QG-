@@ -53,9 +53,12 @@ connection.connect((err) => {
           CREATE TABLE IF NOT EXISTS CreateModulList (
             id INT AUTO_INCREMENT PRIMARY KEY,
             head VARCHAR(255) NOT NULL,
-            data varchar(500) NOT NULL,
+            model_data varchar(500) NOT NULL,
             removed BOOLEAN DEFAULT false,
-            scale INT DEFAULT 1
+            scale INT DEFAULT 1,
+            model_url VARCHAR(255) NOT NULL,
+            user_id INT NOT NULL,
+            foreign key(user_id) references UserList(id) on delete cascade on update cascade
           )`;
 
       // 创建层级表
